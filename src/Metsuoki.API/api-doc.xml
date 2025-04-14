@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Metsuoki.API</name>
+    </assembly>
+    <members>
+        <member name="T:Metsuoki.API.Controllers.AccountController">
+            <summary>
+            Контроллер для аутентификации и регистрации пользователей.
+            </summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.AccountController.Register(Metsuoki.Application.MediatR.Account.Commands.RegistrationCommand.RegistrationCommand)">
+            <summary>
+            Регистрирует нового пользователя
+            </summary>
+            <param name="command">Данные для регистрации пользователя.</param>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.AccountController.Authenticate(Metsuoki.Application.MediatR.Tokens.CreateToken.CreateTokenCommand)">
+            <summary>
+            Аутентифицирует пользователя
+            </summary>
+            <param name="command">Команда с учетными данными пользователя для аутентификации.</param>
+            <returns>
+            Возвращает JWT-токен в случае успешной аутентификации (код 200 OK) 
+            или массив ошибок в случае неудачи (код 400 Bad Request).
+            </returns>
+        </member>
+        <member name="T:Metsuoki.API.Controllers.BaseController">
+            <summary>
+            Базовый контроллер для общих сервисов
+            </summary>
+        </member>
+        <member name="T:Metsuoki.API.Controllers.CartController">
+            <summary>
+            Контроллер для работы с корзиной
+            </summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CartController.GetUserCartQuery(System.Guid)">
+            <summary>
+            Получает корзину пользователя
+            </summary>
+            <param name="userId">Id пользователя</param>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CartController.AddToCart(Metsuoki.Application.MediatR.Carts.Commands.AddToCartCommand.AddToCartCommand)">
+            <summary>
+            Добавить товар в корзину
+            </summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CartController.RemoveFromCart(Metsuoki.Application.MediatR.Carts.Commands.RemoveFromCartCommand.RemoveFromCartCommand)">
+            <summary>
+            Удалить товар из корзины
+            </summary>
+        </member>
+        <member name="T:Metsuoki.API.Controllers.CategoryController">
+            <summary>
+            Контроллер для работы с категориями
+            </summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CategoryController.GetAllCategory">
+            <summary>Получить все категории</summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CategoryController.GetById(System.Guid)">
+            <summary>Получить категорию по Id</summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CategoryController.CreateCategory(Metsuoki.Application.MediatR.Categories.Commands.CreateCategoryCommand.CreateCategoryDto)">
+            <summary>Создать категорию</summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CategoryController.UpdateCategory(Metsuoki.Application.MediatR.Categories.Commands.UpdateCategoryCommand.UpdateCategoryDto)">
+            <summary>Обновить категорию</summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.CategoryController.Delete(System.Guid)">
+            <summary>Удалить категорию</summary>
+        </member>
+        <member name="T:Metsuoki.API.Controllers.OrderController">
+            <summary>
+            Контроллер для работы с заказами
+            </summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.OrderController.GetAll">
+            <summary>
+            Получает список всех заказов
+            </summary>
+            <returns>Список заказов</returns>
+        </member>
+        <member name="T:Metsuoki.API.Controllers.ProductController">
+            <summary>
+            Контроллер для работы с товарами
+            </summary>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.ProductController.GetAll">
+            <summary>
+            Получает список всех товаров
+            </summary>
+            <returns>Список товаров</returns>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.ProductController.GetById(System.Guid)">
+            <summary>
+            Получает товар по его идентификатору
+            </summary>
+            <param name="id">Идентификатор товара</param>
+            <returns>Товар</returns>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.ProductController.Create(Metsuoki.Application.MediatR.Products.Commands.CreateProductCommand.CreateProductCommand)">
+            <summary>
+            Добавляет новый товар
+            </summary>
+            <param name="command">Команда для добавления товара</param>
+            <returns>Результат добавления товара</returns>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.ProductController.Update(Metsuoki.Application.MediatR.Products.Commands.UpdateProductCommand.UpdateProductCommand)">
+            <summary>
+            Обновляет существующий товар
+            </summary>
+            <param name="command">Команда для обновления товара</param>
+            <returns>Результат обновления товара</returns>
+        </member>
+        <member name="M:Metsuoki.API.Controllers.ProductController.Delete(System.Guid)">
+            <summary>
+            Удаляет товар по его идентификатору
+            </summary>
+            <param name="id">Идентификатор товара</param>
+            <returns>Результат удаления товара</returns>
+        </member>
+    </members>
+</doc>
