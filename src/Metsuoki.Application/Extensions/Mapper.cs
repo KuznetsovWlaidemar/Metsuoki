@@ -15,7 +15,7 @@ public static class Mapper
             Id = product.Id,
             Title = product.Title,
             Description = product.Description,
-            Price = product.Price,
+            BasePrice = product.BasePrice,
             CurrentPrice = product.CurrentPrice,
             CategoryId = product.CategoryId,
             CategoryName = product.Category?.Name,

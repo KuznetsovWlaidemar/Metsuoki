@@ -1,4 +1,4 @@
-﻿using Metsuoki.Domain.Entities.Products;
+﻿using Metsuoki.Domain.Entities.Products.ProductVariants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -7,18 +7,27 @@ public class ProductVariantConfiguration : IEntityTypeConfiguration<ProductVaria
 {
     public void Configure(EntityTypeBuilder<ProductVariant> builder)
     {
-        builder.Property(v => v.Color).IsRequired().HasMaxLength(50);
-        builder.Property(v => v.Size).IsRequired().HasMaxLength(20);
+        builder.Property(v => v.Stock)
+            .IsRequired();
 
-        builder.Property(v => v.Stock).IsRequired();
-
-        builder.Property(v => v.PriceOverride).HasColumnType("decimal(18,2)");
+        builder.Property(v => v.PriceOverride)
+            .HasColumnType("decimal(18,2)");
 
         builder.HasOne(v => v.Product)
             .WithMany(p => p.Variants)
             .HasForeignKey(v => v.ProductId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasIndex(v => new { v.ProductId, v.Color, v.Size }).IsUnique(); // уникальность комбинации
+        builder.HasOne(v => v.Color)
+            .WithMany(c => c.ProductVariants)
+            .HasForeignKey(v => v.ColorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(v => v.Size)
+            .WithMany(s => s.ProductVariants)
+            .HasForeignKey(v => v.SizeId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasIndex(v => new { v.ProductId, v.ColorId, v.SizeId }).IsUnique(); // уникальная комбинация
     }
 }

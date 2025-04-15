@@ -17,12 +17,24 @@ public class CartItemConfiguration : IEntityTypeConfiguration<CartItem>
 
         builder
             .HasOne(ci => ci.Product)
-            .WithMany() // если у Product нет навигационного свойства CartItems
+            .WithMany()
             .HasForeignKey(ci => ci.ProductId)
-            .OnDelete(DeleteBehavior.Restrict); // Чтобы при удалении продукта не удалялись cart items
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder
+            .HasOne(ci => ci.ProductVariant)
+            .WithMany()
+            .HasForeignKey(ci => ci.ProductVariantId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(ci => ci.Quantity)
             .IsRequired()
             .HasDefaultValue(1);
+
+        builder.Property(ci => ci.UnitPrice)
+            .HasPrecision(18, 2)
+            .IsRequired();
+
+        builder.HasIndex(ci => new { ci.CartId, ci.ProductVariantId }).IsUnique();
     }
 }

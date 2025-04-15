@@ -19,7 +19,7 @@ public class CreateProductCommandHandler(
             Id = Guid.NewGuid(),
             Title = dto.Title,
             Description = dto.Description,
-            Price = dto.Price,
+            BasePrice = dto.BasePrice,
             CategoryId = dto.CategoryId,
             DesignerId = dto.DesignerId
         };

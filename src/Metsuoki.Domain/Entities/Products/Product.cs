@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using Metsuoki.Domain.Common;
+using Metsuoki.Domain.Entities.Products.ProductVariants;
 using Metsuoki.Domain.Identity;
 
 namespace Metsuoki.Domain.Entities.Products;
@@ -20,9 +21,9 @@ public class Product : AuditableEntity
     public required string Description { get; set; }
 
     /// <summary>
-    /// Цена товара
+    /// Базовая цена товара
     /// </summary>
-    public required decimal Price { get; set; }
+    public required decimal BasePrice { get; set; }
 
     /// <summary>
     /// Id категории товара
@@ -40,14 +41,15 @@ public class Product : AuditableEntity
     /// Цена с учётом скидки
     /// </summary>
     [NotMapped]
-    public decimal CurrentPrice =>
-    Discounts.FirstOrDefault(d => d.IsActive) is { } discount
-        ? Math.Round(Price * (1 - discount.Percentage / 100), 2)
-        : Price;
+    public decimal CurrentPrice => Discounts.FirstOrDefault(d => d.IsActive) is { } discount
+        ? Math.Round(BasePrice * (1 - discount.Percentage / 100), 2)
+        : BasePrice;
 
+    public bool IsVisible { get; set; }
     public List<ProductDiscount> Discounts { get; set; }
 
     public List<ProductVariant> Variants { get; set; }
+
     /// <summary>
     /// Ссылка на картинки
     /// </summary>

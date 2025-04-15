@@ -7,7 +7,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 {
     public void Configure(EntityTypeBuilder<Product> builder)
     {
-        // Основные свойства
         builder.Property(p => p.Title)
             .IsRequired()
             .HasMaxLength(255);
@@ -16,11 +15,10 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired()
             .HasMaxLength(2000);
 
-        builder.Property(p => p.Price)
+        builder.Property(p => p.BasePrice)
             .IsRequired()
             .HasColumnType("decimal(18,2)");
 
-        // Отношения
         builder.HasOne(p => p.Category)
             .WithMany(c => c.Products)
             .HasForeignKey(p => p.CategoryId)

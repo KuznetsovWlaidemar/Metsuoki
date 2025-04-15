@@ -63,10 +63,8 @@ Log.Information("Service Started");
 
 var app = builder.Build();
 
-if (!environment.IsProduction())
-{
-    app.AddApiGui();
-}
+app.AddApiGui();
+
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors(MYALLOWSPECIFICORIGINS);

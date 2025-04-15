@@ -13,6 +13,7 @@ public class Order : AuditableEntity
     /// Id клиента
     /// </summary>
     public Guid CustomerId { get; set; }
+
     public User Customer { get; set; }
 
     /// <summary>

@@ -11,7 +11,7 @@ public class CartConfiguration : IEntityTypeConfiguration<Cart>
 
         builder
             .HasOne(c => c.User)
-            .WithOne() // Предположим, что у пользователя только одна корзина
+            .WithOne()
             .HasForeignKey<Cart>(c => c.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
@@ -19,10 +19,6 @@ public class CartConfiguration : IEntityTypeConfiguration<Cart>
             .HasMany(c => c.CartItems)
             .WithOne(ci => ci.Cart)
             .HasForeignKey(ci => ci.CartId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder
-            .Navigation(c => c.CartItems)
-            .AutoInclude(); // можно убрать, если ленивую загрузку используешь
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

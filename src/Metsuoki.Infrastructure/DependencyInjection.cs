@@ -26,7 +26,7 @@ public static class DependencyInjection
     private static IServiceCollection AddMetsuokiContext(this IServiceCollection services, IConfiguration configuration)
     {
         services
-            .AddDbContext<DbContext>(options => options.UseNpgsql(configuration.GetConnectionString("MetsuokiConnectionWrite")))
+            .AddDbContext<MetsuokiDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("MetsuokiConnectionWrite")))
             .AddScoped<IMetsuokiDbContext>(provider => provider.GetService<MetsuokiDbContext>());
 
         services.AddIdentityCore<User>(opts =>
@@ -42,7 +42,7 @@ public static class DependencyInjection
         })
             .AddRoles<IdentityRole<Guid>>()
             .AddSignInManager<SignInManager<User>>()
-            .AddEntityFrameworkStores<DbContext>()
+            .AddEntityFrameworkStores<MetsuokiDbContext>()
             .AddDefaultTokenProviders();
 
         return services;
