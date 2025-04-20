@@ -1,18 +1,18 @@
-﻿using System.Data;
-using System.Reflection;
-using System.Security.Claims;
-using Metsuoki.Application.Common.Interfaces;
+﻿using Metsuoki.Application.Common.Interfaces;
 using Metsuoki.Domain.Common;
 using Metsuoki.Domain.Entities;
 using Metsuoki.Domain.Entities.Products;
 using Metsuoki.Domain.Identity;
+using Metsuoki.Infrastructure.Persistence.Seeds;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
-using Shared.Core.Models.Entities;
+using System.Data;
+using System.Reflection;
+using System.Security.Claims;
 
 namespace Metsuoki.Infrastructure.Persistence;
 
@@ -28,13 +28,12 @@ internal class MetsuokiDbContext : IdentityDbContext<User, IdentityRole<Guid>, G
     public DbSet<Cart> Carts { get; set; }
     public DbSet<CartItem> CartItems { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<UserActionLog> UserActionLogs { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
+        builder.AddCategory();
         base.OnModelCreating(builder);
     }
 

@@ -16,7 +16,7 @@ public static class DependencyInjection
               .AddFluentValidationAutoValidation()
               .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-        services.AddTransient(typeof(IRequestPostProcessor<,>), typeof(UserActionLogPostProcessor<,>));
+        //services.AddTransient(typeof(IRequestPostProcessor<,>), typeof(UserActionLogPostProcessor<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>));
         return services;
     }

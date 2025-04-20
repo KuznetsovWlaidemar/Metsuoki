@@ -2,7 +2,6 @@
 using Metsuoki.Domain.Entities.Products;
 using Metsuoki.Domain.Identity;
 using Microsoft.EntityFrameworkCore;
-using Shared.Core.Models.Entities;
 
 namespace Metsuoki.Application.Common.Interfaces;
 public interface IMetsuokiDbContext
@@ -14,7 +13,6 @@ public interface IMetsuokiDbContext
     DbSet<Cart> Carts { get; set; }
     DbSet<CartItem> CartItems { get; set; }
     DbSet<Category> Categories { get; set; }
-    DbSet<UserActionLog> UserActionLogs { get; set; }
     DbSet<RefreshToken> RefreshTokens { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken token);

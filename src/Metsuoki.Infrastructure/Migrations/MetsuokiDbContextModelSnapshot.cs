@@ -102,6 +102,212 @@ namespace Metsuoki.Infrastructure.Migrations
                     b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("10000000-0000-0000-0000-000000000000"),
+                            Description = "Категории одежды для мужчин",
+                            Name = "Мужчинам"
+                        },
+                        new
+                        {
+                            Id = new Guid("20000000-0000-0000-0000-000000000000"),
+                            Description = "Категории одежды для женщин",
+                            Name = "Женщинам"
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0001-0000-0000-000000000000"),
+                            Name = "Брюки",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0002-0000-0000-000000000000"),
+                            Name = "Верхняя одежда",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0002-0000-0000-000000000001"),
+                            Name = "Дубленки мужские",
+                            ParentCategoryId = new Guid("10000000-0002-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0002-0000-0000-000000000002"),
+                            Name = "Жилеты",
+                            ParentCategoryId = new Guid("10000000-0002-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0002-0000-0000-000000000003"),
+                            Name = "Пальто",
+                            ParentCategoryId = new Guid("10000000-0002-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0002-0000-0000-000000000004"),
+                            Name = "Куртки",
+                            ParentCategoryId = new Guid("10000000-0002-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0002-0000-0000-000000000005"),
+                            Name = "Плащи",
+                            ParentCategoryId = new Guid("10000000-0002-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0003-0000-0000-000000000000"),
+                            Name = "Джинсы",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000000"),
+                            Name = "Домашняя одежда",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000001"),
+                            Name = "Брюки и шорты домашние",
+                            ParentCategoryId = new Guid("10000000-0004-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000002"),
+                            Name = "Кигуруми и толстовки",
+                            ParentCategoryId = new Guid("10000000-0004-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000003"),
+                            Name = "Комплекты домашние",
+                            ParentCategoryId = new Guid("10000000-0004-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000004"),
+                            Name = "Пижамы",
+                            ParentCategoryId = new Guid("10000000-0004-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000005"),
+                            Name = "Футболки домашние",
+                            ParentCategoryId = new Guid("10000000-0004-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0004-0000-0000-000000000006"),
+                            Name = "Халаты",
+                            ParentCategoryId = new Guid("10000000-0004-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0005-0000-0000-000000000000"),
+                            Name = "Комбинезоны и полукомбинезоны",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0006-0000-0000-000000000000"),
+                            Name = "Комплекты одежды",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0007-0000-0000-000000000000"),
+                            Name = "Костюмы,  жилекти и пиджаки",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000000"),
+                            Name = "Одежда для спорта",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000001"),
+                            Name = "Спортивные костюмы",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000002"),
+                            Name = "Спортивные брюки",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000003"),
+                            Name = "Спортивные куртки",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000004"),
+                            Name = "Спортивные шорты",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000005"),
+                            Name = "Спортивные майки и футболки",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000006"),
+                            Name = "Спортивные носки и гольфы",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000007"),
+                            Name = "Спортивные толстовки",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0008-0000-0000-000000000008"),
+                            Name = "Спортивные одежда для плавания",
+                            ParentCategoryId = new Guid("10000000-0008-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0009-0000-0000-000000000000"),
+                            Name = "Нижнее белье",
+                            ParentCategoryId = new Guid("10000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0009-0000-0000-000000000001"),
+                            Name = "Комплекты нижнего мужского белья",
+                            ParentCategoryId = new Guid("10000000-0009-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0009-0000-0000-000000000002"),
+                            Name = "Кальсоны и колготки",
+                            ParentCategoryId = new Guid("10000000-0009-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0009-0000-0000-000000000003"),
+                            Name = "Комплекты Корректирующее белье и боди",
+                            ParentCategoryId = new Guid("10000000-0009-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            Id = new Guid("10000000-0009-0000-0000-000000000004"),
+                            Name = "Трусы",
+                            ParentCategoryId = new Guid("10000000-0009-0000-0000-000000000000")
+                        });
                 });
 
             modelBuilder.Entity("Metsuoki.Domain.Entities.Order", b =>
@@ -640,41 +846,6 @@ namespace Metsuoki.Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Shared.Core.Models.Entities.UserActionLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("ActionType")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("UserFullName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActionType");
-
-                    b.HasIndex("Timestamp");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserActionLogs");
                 });
 
             modelBuilder.Entity("Metsuoki.Domain.Entities.Cart", b =>
