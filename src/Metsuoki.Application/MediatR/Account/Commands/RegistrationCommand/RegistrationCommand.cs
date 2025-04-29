@@ -1,7 +1,5 @@
 ﻿using MediatR;
-using Metsuoki.Application.Common.Interfaces;
 using Metsuoki.Domain.Identity;
-using Metsuoki.Shared.Constants;
 using Metsuoki.Shared.Interfaces;
 using Metsuoki.Shared.Interfaces.Result;
 using Microsoft.AspNetCore.Identity;
@@ -14,12 +12,10 @@ namespace Metsuoki.Application.MediatR.Account.Commands.RegistrationCommand;
 /// Команда для регистрации нового пользователя.
 /// </summary>
 /// <param name="PhoneNumber">Номер телефона пользователя.</param>
-public record RegistrationCommand(
-    string PhoneNumber
-) : IRequest<IResult>;
+public record RegistrationCommand(string PhoneNumber) : IRequest<IResult>;
 
 public class RegistrationCommandHandler(
-    IUserVerificationService verificationService, // Сервис отправки кода и сохранения его в хранилище
+    IUserVerificationService verificationService,
     UserManager<User> userManager,
     ILogger<RegistrationCommandHandler> logger
 ) : IRequestHandler<RegistrationCommand, IResult>
@@ -28,7 +24,6 @@ public class RegistrationCommandHandler(
     {
         try
         {
-            // Проверяем формат номера телефона
             if (!IsValidRussianPhoneNumber(command.PhoneNumber))
             {
                 return Result<string>.BadRequest("Неверный формат номера телефона.");
@@ -58,7 +53,6 @@ public class RegistrationCommandHandler(
 
     private bool IsValidRussianPhoneNumber(string phoneNumber)
     {
-        // Проверка, что номер начинается с +7 и состоит из 12 цифр
         return phoneNumber.StartsWith("+7") && phoneNumber.Length == 12 && phoneNumber.Skip(2).All(char.IsDigit);
     }
 }

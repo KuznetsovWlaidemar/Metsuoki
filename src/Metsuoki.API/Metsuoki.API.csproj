@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Metsuoki.Application\Metsuoki.Application.csproj" />
 		<ProjectReference Include="..\Metsuoki.Infrastructure\Metsuoki.Infrastructure.csproj" />
 	</ItemGroup>
 

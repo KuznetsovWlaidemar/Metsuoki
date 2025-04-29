@@ -1,10 +1,15 @@
 using System.Globalization;
 using Metsuoki.API.Infrastructure;
 using Metsuoki.Application;
+using Metsuoki.Application.Common.Interfaces;
 using Metsuoki.Infrastructure;
+using Metsuoki.Infrastructure.Services;
+using Metsuoki.Shared.Interfaces;
+using Metsuoki.Shared.Services;
 using Metsuoki.Shared.ValidatorSettings;
 using Serilog;
 using Serilog.Events;
+using StackExchange.Redis;
 
 const string MYALLOWSPECIFICORIGINS = "_myAllowSpecificOrigins";
 var cultureInfo = new CultureInfo("ru-RU");
@@ -32,6 +37,15 @@ builder.Services.AddCors(options =>
 builder.Services
     .AddMetsuokiApplication()
     .AddMetsuokiInfrastructure(configuration);
+
+builder.Services.AddSingleton(sp => ConnectionMultiplexer.Connect(configuration.GetConnectionString("RedisConnectionString")));
+builder.Services.AddScoped<IRedisCacheService, RedisCacheService>();
+
+builder.Services.AddScoped<ISmsSender, SmsSenderStub>();
+builder.Services.AddScoped<IUserVerificationService, UserVerificationService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+
 
 builder.Services
     .AddControllers(options =>

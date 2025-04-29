@@ -1,4 +1,7 @@
-﻿using Metsuoki.Application.MediatR.Account.Commands.RegistrationCommand;
+﻿using Metsuoki.Application.Dtos;
+using Metsuoki.Application.MediatR.Account.Commands.ConfirmSmsCodeCommand;
+using Metsuoki.Application.MediatR.Account.Commands.RegistrationCommand;
+using Metsuoki.Application.MediatR.Account.Commands.RequestSmsCodeCommand;
 using Metsuoki.Application.MediatR.Tokens.CreateToken;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,5 +41,23 @@ public class AccountController : BaseController
         var result = await Mediator.Send(command);
 
         return result;
+    }
+
+    [HttpPost("request-code")]
+    public async Task<IActionResult> RequestCode([FromBody] RequestSmsCodeDto dto)
+    {
+        var result = await Mediator.Send(new RequestSmsCodeCommand(dto.PhoneNumber));
+        return result.IsSuccess ? Ok(result.Messages) : BadRequest(result.Messages);
+    }
+
+    [HttpPost("confirm")]
+    public async Task<IActionResult> Confirm([FromBody] ConfirmDto dto)
+    {
+        var result = await Mediator.Send(new ConfirmSmsCodeCommand(dto.PhoneNumber, dto.Code, dto.Password));
+
+        if (!result.IsSuccess)
+            return BadRequest(result.Messages);
+
+        return Ok(new { token = result.Value!.Token });
     }
 }
